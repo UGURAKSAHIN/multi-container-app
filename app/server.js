@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
-const bodyParse = require('body-parser');
-const livereload = require('livereload');
+const livereload = require('livereload');    
 const connectLiveReload = require('connect-livereload');
 const app = require('express')();
 const moment = require('moment');
@@ -19,9 +18,8 @@ const FrontRouter = require('./routes/front');
 // Set ejs template engine
 app.set('view engine', 'ejs');
 
-app.use(connectLiveReload())
-
-app.use(bodyParse.urlencoded({ extended: false }));
+app.use(connectLiveReload());
+app.use(express.urlencoded({ extended: false }));
 app.locals.moment = moment;
 
 // Database connection
