@@ -6,14 +6,15 @@ const router = express.Router();
 // Home page route
 router.get('/', async (req, res) => {
 
-    const todos = await Todo.find()
+
+    const todos = await Todo.find();
     res.render("todos", {
         tasks: (Object.keys(todos).length > 0 ? todos : {})
     });
 });
 
 // POST - Submit Task
-router.post('/', (req, res) => {
+router.post('/', async(req, res) => {
     const newTask = new Todo({
         task: req.body.task
     });
